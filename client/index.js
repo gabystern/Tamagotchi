@@ -3,17 +3,20 @@ $(document).ready(function() {
 	fetchToys()
 	fetchSettings()
 
-	// let image = ""
+	let image = ""
 	$(".img-check").click(function(){
-		$(this).toggleClass("check");
-		// image = this.src
+		$(this).toggleClass("picked");
+		image = this.src
 	})
-	
-	$('#new_pet').on('submit', function(event){
+
+	$('#new-pet').submit(function(event){
 		event.preventDefault()
-		let values = $(this).serialize()
-		console.log(image)
 		debugger
+		let name = $('#name').val()
+
+		// $("#setting2").text()
+		// $("#setting2").val()
+		console.log( $( this ).serialize() )
 	})
 })
 
@@ -24,7 +27,7 @@ function fetchToys(){
 			let toyNames = data.map(function(toy){
 				let name = toy.name
 				let id = toy.id
-				let checkbox = `<input type="checkbox" id=${id}><label> ${name} </label> `
+				let checkbox = `<input type="checkbox" id="toy${id}" name="toy" value=${name} ><label> ${name} </label> `
 				// debugger
 				$('.toys').append(checkbox)
 			})
@@ -39,11 +42,9 @@ function fetchSettings(){
 			let settings = data.map(function(setting){
 				let location = setting.location
 				let id = setting.id
-				let selectbox = `<option value=${location} id=${id}> ${location} </option> `
+				let selectbox = `<option value=${id} id="setting${id}" name="setting_id" > ${location} </option> `
 				$('.settings select').append(selectbox)
 			})
 		}
 	})
 }
-
-

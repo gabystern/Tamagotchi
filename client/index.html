@@ -13,6 +13,10 @@
 		 	display: flex;
 		 	flex-direction: row;
 		 }
+     .picked{
+        opacity:0.5;
+      	color:#996;
+      }
 
  	</style>
    <meta charset="utf-8">
@@ -22,7 +26,7 @@
 
  <body>
 	<div class="container">
-		<form id="new_pet">
+		<form id="new-pet">
 		<div class="flex form-group">
 
 			<div class="btn btn-primary">
@@ -32,18 +36,18 @@
 
 			<div class="btn btn-primary">
 				<img src="http://www.huhmagazine.co.uk/images/uploaded/dog_emoji_01.jpg" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
-				<input type="checkbox" name="pet2" id="pet2" value="val2" class="hidden" autocomplete="off">
+				<input type="checkbox" name="image" id="pet2" value="val2" class="hidden" autocomplete="off">
 			</div>
 
 			<div class="btn btn-primary">
 				<img src="http://images.all-free-download.com/images/graphicthumb/cute_cartoon_giraffe_vector_set_537129.jpg" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
-				<input type="checkbox" name="pet3" id="pet3" value="val3" class="hidden" autocomplete="off">
+				<input type="checkbox" name="image" id="pet3" value="val3" class="hidden" autocomplete="off">
 			</div>
 
 		</div>
 
 			<label>Name:</label>
-			<input type='text' id='name'>
+			<input type='text' id='name' name='name'>
 			<label>Setting:</label>
 				<div class="settings">
 					<select>
@@ -52,7 +56,7 @@
 
 			<label>Toys:</label>
 			<div class="toys">
-				
+
 
 			</div>
 			<input type="submit">
