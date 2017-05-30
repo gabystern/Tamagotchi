@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+     crossorigin="anonymous"></script>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ 	<style>
+		 .flex{
+		 	display: flex;
+		 	flex-direction: row;
+		 }
+
+ 	</style>
+   <meta charset="utf-8">
+   <title></title>
+ </head>
+
+
+ <body>
+	<div class="container">
+		<form id="new_pet">
+		<div class="flex form-group">
+
+			<div class="btn btn-primary">
+				<img src="https://pbs.twimg.com/profile_images/1461290785/Pinguim_Crystal_2000.png" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
+				<input type="checkbox" name="pet1" id="pet1" value="val1" class="hidden" autocomplete="off">
+			</div>
+
+			<div class="btn btn-primary">
+				<img src="http://www.huhmagazine.co.uk/images/uploaded/dog_emoji_01.jpg" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
+				<input type="checkbox" name="pet2" id="pet2" value="val2" class="hidden" autocomplete="off">
+			</div>
+
+			<div class="btn btn-primary">
+				<img src="http://images.all-free-download.com/images/graphicthumb/cute_cartoon_giraffe_vector_set_537129.jpg" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
+				<input type="checkbox" name="pet3" id="pet3" value="val3" class="hidden" autocomplete="off">
+			</div>
+
+		</div>
+
+			<label>Name:</label>
+			<input type='text' id='name'>
+			<label>Setting:</label>
+			<select>
+			<option value="forest">Forest</option>
+			<option value="city">NYC</option>
+			</select>
+
+			<label>Toys:</label>
+			<div class="toys">
+				
+
+			</div>
+			<input type="submit">
+		</form>
+
+	</div>
+
+	<script type="text/javascript" src='index.js'></script>
+ </body>
+</html>
