@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       patch '/pets/:id/rubiks', to: 'pets#rubiks'
       patch '/pets/:id/jumprope', to: 'pets#jumprope'
       patch '/pets/:id/fidgetspinner', to: 'pets#fidgetspinner'
+      patch '/pets/:id/decrement', to: 'pets#decrement'
   	end
   end
 

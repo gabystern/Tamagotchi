@@ -59,6 +59,16 @@ class Api::V1::PetsController < ApplicationController
 		render json: pet
 	end
 
+	def decrement
+		pet = Pet.find_by(id: params[:id])
+		pet.happiness -= 1
+		pet.hunger -= 1
+		pet.intelligence -= 1
+		pet.sleepiness -= 1
+		pet.save
+		render json: pet
+	end
+
 	private
 
 	def pet_params
