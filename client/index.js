@@ -14,17 +14,27 @@ $(document).ready(function() {
 		let setting_id = $('#setting-picked :selected').val();
 		let image = $('.img-check.picked')[0].src
 		let toys = $('#toy-picked :checked')
-		// toys[0].value -> get's first toy that is checked
-		let alltoys = toys.map(function(toy){ return toy.value })
-		// let toys = toysArray.map(function(toy){
-		// 	return toy.value()
-		// })
-
-		console.log(name)
-		console.log(setting_id)
-		console.log(image)
-		console.log(alltoys)
-		debugger
+		let alltoys = []
+		for (var i = 0; i<toys.length; i++){
+	    alltoys.push(toys[i].value)
+		}
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:3000/api/v1/pets',
+			data: {pet:{name: `${name}`,
+			setting_id: `${setting_id}`,
+			image: `${image}`,
+			happiness: 10,
+			sleepiness: 10,
+			intelligence: 10,
+			hunger: 10,
+			toy_ids: alltoys
+			}}
+			,
+			success: function(data){
+				console.log(data)
+			}
+		})
 	})
 })
 
@@ -35,7 +45,7 @@ function fetchToys(){
 			let toyNames = data.map(function(toy){
 				let name = toy.name
 				let id = toy.id
-				let checkbox = `<input type="checkbox" name="toy" value="${toy.name}" ><label> ${name} </label> `
+				let checkbox = `<input type="checkbox" name="toy" value="${toy.id}" ><label> ${name} </label> `
 				$('.toys').append(checkbox)
 			})
 		}
