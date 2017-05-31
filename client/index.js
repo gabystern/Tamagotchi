@@ -67,9 +67,18 @@ function fetchSettings(){
 			})
 		}
 	})
+
+
+
 }
 
+// function renderShowStatus(pet){
+// 	let happiness = `<li> ${pet.happiness}</li>`
+// 	$('.show-status').html(happiness)
+// }
+
 function showDetails(pet){
+
 	// debugger
 	console.log(pet.id)
 	$('.show-pet').append(`<img src=${pet.image}><br><h3>${pet.name}</h3>`)
@@ -77,7 +86,7 @@ function showDetails(pet){
 
 	petEat(pet)
 	petSleep(pet)
-	playRubiksCube(pet)
+	petPlay(pet)
 }
 
 function petEat(pet){
@@ -108,22 +117,7 @@ function petSleep(pet){
 	})
 }
 
-// function petPlay(pet){
-// 	$('.show-interact').append(`<input type="submit" id="play-button" value="Play"/>`)
-// 	$('#play-button').click(function(event){
-// 		event.preventDefault()
-// 		$.ajax({
-// 			type: 'PATCH',
-// 			url: `http://localhost:3000/api/v1/pets/${pet.id}/toys/${pet.toys[0].id}/play`,
-// 			success: function(data){
-// 				debugger
-// 				console.log(`Pet has a happiness level of ${data.happiness} and sleepiness of ${data.sleepiness}`)
-// 			}
-// 		})
-// 	})
-// }
-
-function playRubiksCube(pet){
+function petPlay(pet){
 	for (var i = 0; i<pet.toys.length; i++){
 	if (pet.toys[i].id === 1){
 		$('.show-interact').append(`<input type="submit" id="rubiks-cube-button" value="Play Rubik's Cube"/>`)
@@ -163,4 +157,14 @@ function playRubiksCube(pet){
 		})
 	}
 	}
+
+	let happiness = `<li>Happiness Level : ${pet.happiness}</li>`
+	let hunger = `<li>Hunger Level : ${pet.hunger}</li>`
+	let intelligence = `<li>Intelligence Level : ${pet.intelligence}</li>`
+	let sleepiness = `<li>Sleepiness Level: ${pet.sleepiness}</li>`
+	$('.show-status').append(happiness, intelligence, hunger, sleepiness) 
+	$('.show-pet').css('backgroundImage',`url(${pet.setting.image})`)
+	$('.show-pet').html(`<center><img src=${pet.image}></center>`)
+	$('.show-pet-name').html(`<h3><center>${pet.name}</center></h3>`)
+
 }
