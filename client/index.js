@@ -32,7 +32,10 @@ $(document).ready(function() {
 			}}
 			,
 			success: function(data){
-				console.log(data)
+				let id = data.id
+				// $('#new-pet').reset()
+				$('#new-pet').hide()
+				showDetails(data)
 			}
 		})
 	})
@@ -64,4 +67,8 @@ function fetchSettings(){
 			})
 		}
 	})
+}
+
+function showDetails(pet){
+	console.log(pet.id)
 }
