@@ -28,7 +28,7 @@ $(document).ready(function() {
 			sleepiness: 10,
 			intelligence: 10,
 			hunger: 10,
-			toys: `${alltoys}`
+			toy_ids: alltoys
 			}}
 			,
 			success: function(data){
@@ -45,7 +45,7 @@ function fetchToys(){
 			let toyNames = data.map(function(toy){
 				let name = toy.name
 				let id = toy.id
-				let checkbox = `<input type="checkbox" name="toy" value="${toy.name}" ><label> ${name} </label> `
+				let checkbox = `<input type="checkbox" name="toy" value="${toy.id}" ><label> ${name} </label> `
 				$('.toys').append(checkbox)
 			})
 		}
