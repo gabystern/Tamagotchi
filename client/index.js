@@ -67,9 +67,22 @@ function fetchSettings(){
 			})
 		}
 	})
+
+
+
 }
 
+// function renderShowStatus(pet){
+// 	let happiness = `<li> ${pet.happiness}</li>`
+// 	$('.show-status').html(happiness)
+// }
+
 function showDetails(pet){
+	let happiness = `<li>Happiness Level : ${pet.happiness}</li>`
+	let hunger = `<li>Hunger Level : ${pet.hunger}</li>`
+	let intelligence = `<li>Intelligence Level : ${pet.intelligence}</li>`
+	let sleepiness = `<li>Sleepiness Level: ${pet.sleepiness}</li>`
+	$('.show-status').append(happiness, intelligence, hunger, sleepiness) 
 	$('.show-pet').css('backgroundImage',`url(${pet.setting.image})`)
 	$('.show-pet').html(`<center><img src=${pet.image}></center>`)
 	$('.show-pet-name').html(`<h3><center>${pet.name}</center></h3>`)
