@@ -3,12 +3,10 @@ class Api::V1::PetsController < ApplicationController
 
 	def create
 		@pet = Pet.create(pet_params)
-		# byebug
 		render json: @pet
 	end
 
 	def update
-		byebug
 	end
 
 	def feed

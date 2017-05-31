@@ -3,44 +3,54 @@ $(document).ready(function() {
 
 	fetchToys()
 	fetchSettings()
+	imageClick()
+	submitPet()
 
+})
+
+
+function imageClick(){
 	let image = ""
 	$(".img-check").click(function(){
 		$(this).toggleClass("picked");
 	})
+}
+
+
+function submitPet(){
 
 	$('#new-pet').submit(function(event){
-		event.preventDefault()
-		let name = $('#name').val()
-		let setting_id = $('#setting-picked :selected').val();
-		let image = $('.img-check.picked')[0].src
-		let toys = $('#toy-picked :checked')
-		let alltoys = []
-		for (var i = 0; i<toys.length; i++){
-	    alltoys.push(toys[i].value)
-		}
-		$.ajax({
-			type: 'POST',
-			url: 'http://localhost:3000/api/v1/pets',
-			data: {pet:{name: `${name}`,
-			setting_id: `${setting_id}`,
-			image: `${image}`,
-			happiness: 10,
-			sleepiness: 10,
-			intelligence: 10,
-			hunger: 10,
-			toy_ids: alltoys
-			}}
-			,
-			success: function(data){
-				$('#new-pet').hide()
-				startTimer(data)
-				showDetails(data)
+	event.preventDefault()
+	let name = $('#name').val()
+	let setting_id = $('#setting-picked :selected').val();
+	let image = $('.img-check.picked')[0].src
+	let toys = $('#toy-picked :checked')
+	let alltoys = []
+	for (var i = 0; i<toys.length; i++){
+    alltoys.push(toys[i].value)
+	}
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost:3000/api/v1/pets',
+		data: {pet:{name: `${name}`,
+		setting_id: `${setting_id}`,
+		image: `${image}`,
+		happiness: 10,
+		sleepiness: 10,
+		intelligence: 10,
+		hunger: 10,
+		toy_ids: alltoys
+		}}
+		,
+		success: function(data){
+			$('#new-pet').hide()
+			startTimer(data)
+			showDetails(data)
 
-			}
-		})
+		}
 	})
-})
+  })
+}
 
 
 function startTimer(pet){
@@ -72,8 +82,8 @@ function itsDead(pet){
 }
 
 function renderDead(){
-	$('.container').html('<center><h1>Thanks for Nothing</h1><br><img src="https://68.media.tumblr.com/bd172c9b6928e5b148be37d5a13e739a/tumblr_o21bscL3FW1uf5cjoo1_400.gif"></center>')
-	$('.container').append( `<input type="submit" id="play-button" value="Play Again"/>`)
+	$('.container').html('<center><h1>Thanks for Nothing</h1><br><img src="https://68.media.tumblr.com/bd172c9b6928e5b148be37d5a13e739a/tumblr_o21bscL3FW1uf5cjoo1_400.gif"></center><input type="submit" id="play-button" value="Play Again"/>')
+	// $('.container').append( `<input type="submit" id="play-button" value="Play Again"/>`)
 	$('#play-button').click(function(event){
 		event.preventDefault()
 		window.location.reload(true)
@@ -115,9 +125,6 @@ function fetchSettings(){
 
 
 function showDetails(pet){
-
-	// debugger
-	console.log(pet.id)
 	$('.show-pet').append(`<img src=${pet.image}><br><h3>${pet.name}</h3>`)
 	$('.show-pet').append(`<img src=${pet.setting.image}>`)
 
