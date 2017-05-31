@@ -2,6 +2,7 @@ class Api::V1::PetsController < ApplicationController
 
 
 	def create
+		byebug
 		@pet = Pet.create(pet_params)
 		render json: @pet
 	end
@@ -14,7 +15,7 @@ class Api::V1::PetsController < ApplicationController
 	private
 
 	def pet_params
-		params.require(:pet).permit(:name, :intelligence, :happiness, :hunger, :sleepiness, :image, :setting_id)
+		params.require(:pet).permit(:name, :intelligence, :happiness, :hunger, :sleepiness, :image, :setting_id, :toys)
 	end
 
 
