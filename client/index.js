@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+
 	fetchToys()
 	fetchSettings()
 
@@ -60,12 +61,24 @@ function startTimer(pet){
 }
 
 
+
 function itsDead(pet){
 	if (pet.happiness === 0 || pet.hunger === 0 || pet.sleepiness === 0 || pet.intelligence === 0){
 		alert("Your pet died")
+		renderDead()
 		return true
 	}
-	
+
+}
+
+function renderDead(){
+	$('.container').html('<h1>Thanks for Nothing</h1><br><img src="https://68.media.tumblr.com/bd172c9b6928e5b148be37d5a13e739a/tumblr_o21bscL3FW1uf5cjoo1_400.gif">')
+	$('.container').append( `<input type="submit" id="play-button" value="Play Again"/>`)
+	$('#play-button').click(function(event){
+		event.preventDefault()
+		window.location.reload(true)
+		
+	})
 }
 
 
