@@ -67,8 +67,22 @@ function fetchSettings(){
 			})
 		}
 	})
+
+
+
 }
 
+// function renderShowStatus(pet){
+// 	let happiness = `<li> ${pet.happiness}</li>`
+// 	$('.show-status').html(happiness)
+// }
+
 function showDetails(pet){
+	let happiness = `<li>Happiness Level : ${pet.happiness}</li>`
+	let hunger = `<li>Hunger Level : ${pet.hunger}</li>`
+	let intelligence = `<li>Intelligence Level : ${pet.intelligence}</li>`
+	let sleepiness = `<li>Sleepiness Level: ${pet.sleepiness}</li>`
+
+	$('.show-status').append(happiness, intelligence, hunger, sleepiness)
 	console.log(pet.id)
 }
