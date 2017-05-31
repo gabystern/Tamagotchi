@@ -70,5 +70,8 @@ function fetchSettings(){
 }
 
 function showDetails(pet){
+	// debugger
 	console.log(pet.id)
+	$('.show-pet').append(`<img src=${pet.image}><br><h3>${pet.name}</h3>`)
+	$('.show-pet').append(`<img src=${pet.setting.image}>`)
 }
