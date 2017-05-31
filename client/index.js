@@ -6,17 +6,25 @@ $(document).ready(function() {
 	let image = ""
 	$(".img-check").click(function(){
 		$(this).toggleClass("picked");
-		image = this.src
 	})
 
 	$('#new-pet').submit(function(event){
 		event.preventDefault()
-		debugger
 		let name = $('#name').val()
+		let setting_id = $('#setting-picked :selected').val();
+		let image = $('.img-check.picked')[0].src
+		let toys = $('#toy-picked :checked')
+		// toys[0].value -> get's first toy that is checked
+		let alltoys = toys.map(function(toy){ return toy.value })
+		// let toys = toysArray.map(function(toy){
+		// 	return toy.value()
+		// })
 
-		// $("#setting2").text()
-		// $("#setting2").val()
-		console.log( $( this ).serialize() )
+		console.log(name)
+		console.log(setting_id)
+		console.log(image)
+		console.log(alltoys)
+		debugger
 	})
 })
 
@@ -27,8 +35,7 @@ function fetchToys(){
 			let toyNames = data.map(function(toy){
 				let name = toy.name
 				let id = toy.id
-				let checkbox = `<input type="checkbox" id="toy${id}" name="toy" value=${name} ><label> ${name} </label> `
-				// debugger
+				let checkbox = `<input type="checkbox" name="toy" value="${toy.name}" ><label> ${name} </label> `
 				$('.toys').append(checkbox)
 			})
 		}
