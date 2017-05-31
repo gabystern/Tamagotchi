@@ -72,10 +72,6 @@ function fetchSettings(){
 
 }
 
-// function renderShowStatus(pet){
-// 	let happiness = `<li> ${pet.happiness}</li>`
-// 	$('.show-status').html(happiness)
-// }
 
 function showDetails(pet){
 
@@ -96,8 +92,9 @@ function petEat(pet){
 		$.ajax({
 		  type: 'PATCH',
 		  url: `http://localhost:3000/api/v1/pets/${pet.id}/feed`,
-		  success: function(data){
-				console.log(`Pet has a hunger level of ${data.hunger}`)
+		  success: function(pet){
+				console.log(`Pet has a hunger level of ${pet.hunger}`)
+				updateStats(pet)
 		  }
 		})
 	})
@@ -110,8 +107,9 @@ function petSleep(pet){
 		$.ajax({
 			type: 'PATCH',
 			url: `http://localhost:3000/api/v1/pets/${pet.id}/sleep`,
-			success: function(data){
-				console.log(`Pet has a sleepiness level of ${data.sleepiness}`)
+			success: function(pet){
+				console.log(`Pet has a sleepiness level of ${pet.sleepiness}`)
+				updateStats(pet)
 			}
 		})
 	})
@@ -128,6 +126,7 @@ function petPlay(pet){
 				url: `http://localhost:3000/api/v1/pets/${pet.id}/rubiks`,
 				success: function(pet){
 					console.log('they played with a rubiks cube')
+					updateStats(pet)
 				}
 			})
 		})
@@ -140,6 +139,7 @@ function petPlay(pet){
 				url: `http://localhost:3000/api/v1/pets/${pet.id}/jumprope`,
 				success: function(pet){
 					console.log('they played with a jump rope')
+					updateStats(pet)
 				}
 			})
 		})
@@ -152,19 +152,26 @@ function petPlay(pet){
 				url: `http://localhost:3000/api/v1/pets/${pet.id}/fidgetspinner`,
 				success: function(pet){
 					console.log('they played with a fidget spinner')
+					updateStats(pet)
+	
 				}
 			})
 		})
 	}
 	}
 
-	let happiness = `<li>Happiness Level : ${pet.happiness}</li>`
-	let hunger = `<li>Hunger Level : ${pet.hunger}</li>`
-	let intelligence = `<li>Intelligence Level : ${pet.intelligence}</li>`
-	let sleepiness = `<li>Sleepiness Level: ${pet.sleepiness}</li>`
-	$('.show-status').append(happiness, intelligence, hunger, sleepiness) 
+	updateStats(pet)
 	$('.show-pet').css('backgroundImage',`url(${pet.setting.image})`)
 	$('.show-pet').html(`<center><img src=${pet.image}></center>`)
 	$('.show-pet-name').html(`<h3><center>${pet.name}</center></h3>`)
 
+}
+
+function updateStats(pet){
+	let happiness = `<li>Happiness Level : ${pet.happiness}</li>`
+	let hunger = `<li>Hunger Level : ${pet.hunger}</li>`
+	let intelligence = `<li>Intelligence Level : ${pet.intelligence}</li>`
+	let sleepiness = `<li>Sleepiness Level: ${pet.sleepiness}</li>`
+	let stats = [happiness, hunger, intelligence, sleepiness].join(' ')
+	return $('.show-status').html(stats) 
 }
