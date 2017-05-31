@@ -32,14 +32,42 @@ $(document).ready(function() {
 			}}
 			,
 			success: function(data){
-				let id = data.id
-				// $('#new-pet').reset()
 				$('#new-pet').hide()
+				startTimer(data)
 				showDetails(data)
+
 			}
 		})
 	})
 })
+
+
+function startTimer(pet){
+	let timer = setInterval(function(){
+		$.ajax({
+			type: 'PATCH',
+			async: "false",
+			url: `http://localhost:3000/api/v1/pets/${pet.id}/decrement`,
+			success: function(data){
+				console.log('its going donw')
+				updateStats(data)
+				if (itsDead(data)){
+					clearInterval(timer)
+				}
+			}
+		})
+	}, 1000)
+}
+
+
+function itsDead(pet){
+	if (pet.happiness === 0 || pet.hunger === 0 || pet.sleepiness === 0 || pet.intelligence === 0){
+		alert("Your pet died")
+		return true
+	}
+	
+}
+
 
 function fetchToys(){
 	$.ajax({
