@@ -72,7 +72,7 @@ function itsDead(pet){
 }
 
 function renderDead(){
-	$('.container').html('<h1>Thanks for Nothing</h1><br><img src="https://68.media.tumblr.com/bd172c9b6928e5b148be37d5a13e739a/tumblr_o21bscL3FW1uf5cjoo1_400.gif">')
+	$('.container').html('<center><h1>Thanks for Nothing</h1><br><img src="https://68.media.tumblr.com/bd172c9b6928e5b148be37d5a13e739a/tumblr_o21bscL3FW1uf5cjoo1_400.gif"></center>')
 	$('.container').append( `<input type="submit" id="play-button" value="Play Again"/>`)
 	$('#play-button').click(function(event){
 		event.preventDefault()
