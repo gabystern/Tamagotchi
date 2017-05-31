@@ -2,13 +2,18 @@ Rails.application.routes.draw do
 
   namespace :api do
   	namespace :v1 do
-  		resources :pets, only: [:index, :create]
+  		resources :pets, only: [:index, :create, :show]
+      patch '/pets/:id/feed', to: 'pets#feed'
+      patch '/pets/:id/sleep', to: 'pets#sleep'
+      patch '/pets/:id/rubiks', to: 'pets#rubiks'
+      patch '/pets/:id/jumprope', to: 'pets#jumprope'
+      patch '/pets/:id/fidgetspinner', to: 'pets#fidgetspinner'
   	end
   end
 
    namespace :api do
   	namespace :v1 do
-  		resources :toys, only: [:index]
+  		resources :toys, only: [:index, :show]
   	end
   end
 
