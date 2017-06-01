@@ -1,0 +1,21 @@
+<style>
+		 .flex{
+		 	display: flex;
+		 	flex-direction: row;
+		 }
+
+     .picked{
+        opacity:0.5;
+      	color:#996;
+      }
+
+
+      .progress .bar {
+        -webkit-transition: width 1s ease-in-out;
+        -moz-transition: width 1s ease-in-out;
+        -ms-transition: width 1s ease-in-out;
+        -o-transition: width 1s ease-in-out;
+        transition: width 1s ease-in-out;
+      }
+
+ 	</style>

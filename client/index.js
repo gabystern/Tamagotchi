@@ -74,8 +74,9 @@ function startTimer(pet){
 
 
 function itsDead(pet){
-	if (pet.happiness < 0 || pet.happiness > 20 || pet.hunger < 0 ||pet.hunger > 20 || pet.sleepiness < 0 || pet.sleepiness > 20 || pet.intelligence < 0 || pet.intelligence > 20){
+	if (pet.happiness < 0 || pet.happiness > 21 || pet.hunger < 0 ||pet.hunger > 21 || pet.sleepiness < 0 || pet.sleepiness > 21 || pet.intelligence < 0 || pet.intelligence > 21){
 		alert("Your pet died")
+		debugger
 		renderDead()
 		return true
 	}
