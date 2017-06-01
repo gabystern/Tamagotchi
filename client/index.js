@@ -5,6 +5,7 @@ $(document).ready(function() {
 	fetchSettings()
 	imageClick()
 	submitPet()
+	startTimer(pet)
 
 })
 
@@ -12,6 +13,7 @@ $(document).ready(function() {
 function imageClick(){
 	let image = ""
 	$(".img-check").click(function(){
+		$('.img-check').not(this).removeClass('picked');
 		$(this).toggleClass("picked");
 	})
 }
@@ -87,7 +89,7 @@ function renderDead(){
 	$('#play-button').click(function(event){
 		event.preventDefault()
 		window.location.reload(true)
-		
+
 	})
 }
 
@@ -163,48 +165,60 @@ function petSleep(pet){
 	})
 }
 
+function addRubiksBtn(){
+	$('.show-interact').append(`<input type="submit" id="rubiks-cube-button" value="Play Rubik's Cube"/>`)
+	$('#rubiks-cube-button').click(function(event){
+		event.preventDefault()
+		$.ajax({
+			type: 'PATCH',
+			url: `http://localhost:3000/api/v1/pets/${pet.id}/rubiks`,
+			success: function(pet){
+				console.log('they played with a rubiks cube')
+				updateStats(pet)
+			}
+		})
+	})
+}
+
+function addJumpRopeBtn(){
+	$('.show-interact').append(`<input type="submit" id="jump-rope-button" value="Play Jump Rope"/>`)
+	$('#jump-rope-button').click(function(event){
+		event.preventDefault()
+		$.ajax({
+			type: 'PATCH',
+			url: `http://localhost:3000/api/v1/pets/${pet.id}/jumprope`,
+			success: function(pet){
+				console.log('they played with a jump rope')
+				updateStats(pet)
+			}
+		})
+	})
+}
+
+function addFidgetSpinBtn(){
+	$('.show-interact').append(`<input type="submit" id="fidget-spinner-button" value="Play Figet Spinner"/>`)
+	$('#fidget-spinner-button').click(function(event){
+		event.preventDefault()
+		$.ajax({
+			type: 'PATCH',
+			url: `http://localhost:3000/api/v1/pets/${pet.id}/fidgetspinner`,
+			success: function(pet){
+				console.log('they played with a fidget spinner')
+				updateStats(pet)
+
+			}
+		})
+	})
+}
+
 function petPlay(pet){
 	for (var i = 0; i<pet.toys.length; i++){
 	if (pet.toys[i].id === 1){
-		$('.show-interact').append(`<input type="submit" id="rubiks-cube-button" value="Play Rubik's Cube"/>`)
-		$('#rubiks-cube-button').click(function(event){
-			event.preventDefault()
-			$.ajax({
-				type: 'PATCH',
-				url: `http://localhost:3000/api/v1/pets/${pet.id}/rubiks`,
-				success: function(pet){
-					console.log('they played with a rubiks cube')
-					updateStats(pet)
-				}
-			})
-		})
+		addRubiksBtn()
 	} else if (pet.toys[i].id === 2){
-		$('.show-interact').append(`<input type="submit" id="jump-rope-button" value="Play Jump Rope"/>`)
-		$('#jump-rope-button').click(function(event){
-			event.preventDefault()
-			$.ajax({
-				type: 'PATCH',
-				url: `http://localhost:3000/api/v1/pets/${pet.id}/jumprope`,
-				success: function(pet){
-					console.log('they played with a jump rope')
-					updateStats(pet)
-				}
-			})
-		})
+		addJumpRopeBtn()
 	} else if (pet.toys[i].id === 3) {
-		$('.show-interact').append(`<input type="submit" id="fidget-spinner-button" value="Play Figet Spinner"/>`)
-		$('#fidget-spinner-button').click(function(event){
-			event.preventDefault()
-			$.ajax({
-				type: 'PATCH',
-				url: `http://localhost:3000/api/v1/pets/${pet.id}/fidgetspinner`,
-				success: function(pet){
-					console.log('they played with a fidget spinner')
-					updateStats(pet)
-	
-				}
-			})
-		})
+		addFidgetSpinBtn()
 	}
 	}
 
@@ -221,5 +235,5 @@ function updateStats(pet){
 	let intelligence = `<li>Intelligence Level : ${pet.intelligence}</li>`
 	let sleepiness = `<li>Sleepiness Level: ${pet.sleepiness}</li>`
 	let stats = [happiness, hunger, intelligence, sleepiness].join(' ')
-	return $('.show-status').html(stats) 
+	return $('.show-status').html(stats)
 }
