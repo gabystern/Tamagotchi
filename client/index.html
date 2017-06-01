@@ -7,15 +7,25 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+   <link rel="stylesheet" type="text/css" href="bootstrap-progressbar.css">
  	<style>
 		 .flex{
 		 	display: flex;
 		 	flex-direction: row;
 		 }
+
      .picked{
         opacity:0.5;
       	color:#996;
+      }
+
+
+      .progress .bar {
+        -webkit-transition: width 2s ease-in-out;
+        -moz-transition: width 2s ease-in-out;
+        -ms-transition: width 2s ease-in-out;
+        -o-transition: width 2s ease-in-out;
+        transition: width 2s ease-in-out;
       }
 
  	</style>
@@ -41,10 +51,18 @@
 				<input type="checkbox" name="image" id="pet2" value="val2" class="hidden" autocomplete="off">
 			</div>
 
+
 			<div class="btn btn-primary">
 				<img src="https://s-media-cache-ak0.pinimg.com/originals/36/b1/6c/36b16cc68bbbca07f1c37183112de693.gif" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
 				<input type="checkbox" name="image" id="pet3" value="val3" class="hidden" autocomplete="off">
 			</div>
+
+			<div class="btn btn-primary">
+				<img src="https://68.media.tumblr.com/52e996cbd1c089aca9cac872578604da/tumblr_onr92bElOC1syjt2wo1_500.gif" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
+				<input type="checkbox" name="image" id="pet4" value="val4" class="hidden" autocomplete="off">
+			</div>
+
+
 
 		</div>
 
@@ -71,7 +89,7 @@
   <div class="show-pet-name"></div>
   <div class="show-interact"></div>
 
-  <div class="show-status">
+  <div class="show-status" text-align="center">
     <ul></ul>
   </div>
 

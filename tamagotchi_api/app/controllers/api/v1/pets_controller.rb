@@ -21,6 +21,13 @@ class Api::V1::PetsController < ApplicationController
 		render json: pet
 	end
 
+	def read
+		pet = Pet.find_by(id: params[:id])
+		pet.intelligence = pet.intelligence + 2
+		pet.save
+		render json: pet
+	end
+
 	def sleep
 		pet = Pet.find_by(id:params[:id])
 		pet.sleepiness = pet.sleepiness + 2
