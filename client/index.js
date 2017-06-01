@@ -5,6 +5,7 @@ $(document).ready(function() {
 	fetchSettings()
 	imageClick()
 	submitPet()
+	startTimer(pet)
 
 })
 
@@ -12,6 +13,7 @@ $(document).ready(function() {
 function imageClick(){
 	let image = ""
 	$(".img-check").click(function(){
+		$('.img-check').not(this).removeClass('picked');
 		$(this).toggleClass("picked");
 	})
 }
@@ -165,6 +167,16 @@ function petSleep(pet){
 	})
 }
 
+function addRubiksBtn(){
+	$('.show-interact').append("<button type='submit' id='rubiks-cube-button' value='Rubik's Cube'><img src='https://cdn0.iconfinder.com/data/icons/rubik-s-cube-color/128/rubiks-cube-128.png'></button>")
+	$('#rubiks-cube-button').click(function(event){
+		event.preventDefault()
+		$.ajax({
+			type: 'PATCH',
+			url: `http://localhost:3000/api/v1/pets/${pet.id}/rubiks`,
+			success: function(pet){
+				console.log('they played with a rubiks cube')
+
 function petRead(pet){
 	$('.show-interact').append("<button type='submit' id='read-button' value='Read'><img src='https://cdn0.iconfinder.com/data/icons/education-15/500/reader-128.png'></button>")
 	$('#read-button').click(function(event){
@@ -174,7 +186,39 @@ function petRead(pet){
 			url: `http://localhost:3000/api/v1/pets/${pet.id}/read`,
 			success: function(pet){
 				console.log(`Pet has an intelligence level of ${pet.intelligence}`)
+
 				updateStats(pet)
+			}
+		})
+	})
+}
+
+function addJumpRopeBtn(){
+$('.show-interact').append("<button type='submit' id='jump-rope-button' value='Jump Rope'><img src='https://cdn2.iconfinder.com/data/icons/sports-fitness-line-vol-3/52/Skipping__jump__jumprope__childskipping__womanskipping__youngskipping__rope-128.png'></button>")	
+$('#jump-rope-button').click(function(event){
+		event.preventDefault()
+		$.ajax({
+			type: 'PATCH',
+			url: `http://localhost:3000/api/v1/pets/${pet.id}/jumprope`,
+			success: function(pet){
+				console.log('they played with a jump rope')
+				updateStats(pet)
+			}
+		})
+	})
+}
+
+function addFidgetSpinBtn(){
+	$('.show-interact').append("<button type='submit' id='fidget-spinner-button' value='Fidget Spinner'><img src='https://cdn4.iconfinder.com/data/icons/fidget-spinner-toy-1/100/spinner_fidget_toy-03-128.png'></button>")
+	$('#fidget-spinner-button').click(function(event){
+		event.preventDefault()
+		$.ajax({
+			type: 'PATCH',
+			url: `http://localhost:3000/api/v1/pets/${pet.id}/fidgetspinner`,
+			success: function(pet){
+				console.log('they played with a fidget spinner')
+				updateStats(pet)
+
 			}
 		})
 	})
@@ -184,43 +228,12 @@ function petRead(pet){
 function petPlay(pet){
 	for (var i = 0; i<pet.toys.length; i++){
 	if (pet.toys[i].id === 1){
-		$('.show-interact').append("<button type='submit' id='rubiks-cube-button' value='Rubik's Cube'><img src='https://cdn0.iconfinder.com/data/icons/rubik-s-cube-color/128/rubiks-cube-128.png'></button>")
-		$('#rubiks-cube-button').click(function(event){
-			event.preventDefault()
-			$.ajax({
-				type: 'PATCH',
-				url: `http://localhost:3000/api/v1/pets/${pet.id}/rubiks`,
-				success: function(pet){
-					updateStats(pet)
-				}
-			})
-		})
+		addRubiksBtn()
 	} else if (pet.toys[i].id === 2){
-		$('.show-interact').append("<button type='submit' id='jump-rope-button' value='Jump Rope'><img src='https://cdn2.iconfinder.com/data/icons/sports-fitness-line-vol-3/52/Skipping__jump__jumprope__childskipping__womanskipping__youngskipping__rope-128.png'></button>")
-
-		$('#jump-rope-button').click(function(event){
-			event.preventDefault()
-			$.ajax({
-				type: 'PATCH',
-				url: `http://localhost:3000/api/v1/pets/${pet.id}/jumprope`,
-				success: function(pet){
-					updateStats(pet)
-				}
-			})
-		})
+		addJumpRopeBtn()
 	} else if (pet.toys[i].id === 3) {
-		$('.show-interact').append("<button type='submit' id='fidget-spinner-button' value='Fidget Spinner'><img src='https://cdn4.iconfinder.com/data/icons/fidget-spinner-toy-1/100/spinner_fidget_toy-03-128.png'></button>")
-		$('#fidget-spinner-button').click(function(event){
-			event.preventDefault()
-			$.ajax({
-				type: 'PATCH',
-				url: `http://localhost:3000/api/v1/pets/${pet.id}/fidgetspinner`,
-				success: function(pet){
-					updateStats(pet)
+		addFidgetSpinBtn()
 
-				}
-			})
-		})
 	}
 	}
 
