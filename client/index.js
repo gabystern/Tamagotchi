@@ -131,10 +131,12 @@ function showDetails(pet){
 	petEat(pet)
 	petSleep(pet)
 	petPlay(pet)
+	petRead(pet)
 }
 
 function petEat(pet){
-	$('.show-interact').append(`<input type="submit" id="eat-button" value="Eat"/>`)
+	// $('.show-interact').append(`<input type="submit" id="eat-button" value="Eat"/>`)
+	$('.show-interact').append("<button type='submit' id='eat-button' value='Eat'><img src='http://www.i2clipart.com/cliparts/5/a/8/f/clipart-burger-5a8f.png'></button>")
 	$('#eat-button').click(function(event){
 		event.preventDefault()
 		$.ajax({
@@ -149,7 +151,7 @@ function petEat(pet){
 }
 
 function petSleep(pet){
-	$('.show-interact').append(`<input type="submit" id="sleep-button" value="Sleep"/>`)
+	$('.show-interact').append("<button type='submit' id='sleep-button' value='Sleep'><img src='https://cdn4.iconfinder.com/data/icons/emojis-flat-pixel-perfect/64/emoji-41-128.png'></button>")
 	$('#sleep-button').click(function(event){
 		event.preventDefault()
 		$.ajax({
@@ -163,10 +165,26 @@ function petSleep(pet){
 	})
 }
 
+function petRead(pet){
+	$('.show-interact').append("<button type='submit' id='read-button' value='Read'><img src='https://cdn0.iconfinder.com/data/icons/education-15/500/reader-128.png'></button>")
+	$('#read-button').click(function(event){
+		event.preventDefault()
+		$.ajax({
+			type: 'PATCH',
+			url: `http://localhost:3000/api/v1/pets/${pet.id}/read`,
+			success: function(pet){
+				console.log(`Pet has an intelligence level of ${pet.intelligence}`)
+				updateStats(pet)
+			}
+		})
+	})
+
+}
+
 function petPlay(pet){
 	for (var i = 0; i<pet.toys.length; i++){
 	if (pet.toys[i].id === 1){
-		$('.show-interact').append(`<input type="submit" id="rubiks-cube-button" value="Play Rubik's Cube"/>`)
+		$('.show-interact').append("<button type='submit' id='rubiks-cube-button' value='Rubik's Cube'><img src='https://cdn0.iconfinder.com/data/icons/rubik-s-cube-color/128/rubiks-cube-128.png'></button>")
 		$('#rubiks-cube-button').click(function(event){
 			event.preventDefault()
 			$.ajax({
@@ -179,7 +197,7 @@ function petPlay(pet){
 			})
 		})
 	} else if (pet.toys[i].id === 2){
-		$('.show-interact').append(`<input type="submit" id="jump-rope-button" value="Play Jump Rope"/>`)
+		$('.show-interact').append("<button type='submit' id='jump-rope-button' value='Jump Rope'><img src='https://cdn2.iconfinder.com/data/icons/sports-fitness-line-vol-3/52/Skipping__jump__jumprope__childskipping__womanskipping__youngskipping__rope-128.png'></button>")
 		$('#jump-rope-button').click(function(event){
 			event.preventDefault()
 			$.ajax({
@@ -192,7 +210,7 @@ function petPlay(pet){
 			})
 		})
 	} else if (pet.toys[i].id === 3) {
-		$('.show-interact').append(`<input type="submit" id="fidget-spinner-button" value="Play Figet Spinner"/>`)
+		$('.show-interact').append("<button type='submit' id='fidget-spinner-button' value='Fidget Spinner'><img src='https://cdn4.iconfinder.com/data/icons/fidget-spinner-toy-1/100/spinner_fidget_toy-03-128.png'></button>")
 		$('#fidget-spinner-button').click(function(event){
 			event.preventDefault()
 			$.ajax({
