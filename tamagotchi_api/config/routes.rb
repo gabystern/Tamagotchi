@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       patch '/pets/:id/jumprope', to: 'pets#jumprope'
       patch '/pets/:id/fidgetspinner', to: 'pets#fidgetspinner'
       patch '/pets/:id/decrement', to: 'pets#decrement'
+      patch '/pets/:id/read', to: 'pets#read'
   	end
   end
 

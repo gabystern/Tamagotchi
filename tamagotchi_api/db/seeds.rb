@@ -5,7 +5,23 @@ city = Setting.create(
 
 forest = Setting.create(
 	location: "Magical Forest",
-	image: "http://he.bcdn.biz/Images/2015/1/19/7af2e0e2-eeef-49e6-966d-10a5b13a34e8.jpg"
+	image: "http://www.hilltoppaintball.com/house/images/farm.jpg"
+	)
+
+theclub = Setting.create(
+	location: "The Club",
+	image: "http://thecoolhunter.net/wp-content/uploads/old-blog-images/larc2.jpg"
+	)
+
+mancave = Setting.create(
+	location: "Man Cave",
+	image: "http://dudeliving.com/wp-content/uploads/2015/07/football-themed-man-cave.jpg"
+	)
+
+
+farm = Setting.create(
+	location: "The Farm",
+	image: "http://www.hilltoppaintball.com/house/images/farm.jpg"
 	)
 
 rubiks_cube = Toy.create(
