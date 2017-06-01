@@ -73,7 +73,7 @@ function startTimer(pet){
 
 
 function itsDead(pet){
-	if (pet.happiness === 0 || pet.hunger === 0 || pet.sleepiness === 0 || pet.intelligence === 0){
+	if (pet.happiness < 0 || pet.happiness > 20 || pet.hunger < 0 ||pet.hunger > 20 || pet.sleepiness < 0 || pet.sleepiness > 20 || pet.intelligence < 0 || pet.intelligence > 20){
 		alert("Your pet died")
 		renderDead()
 		return true
@@ -83,11 +83,10 @@ function itsDead(pet){
 
 function renderDead(){
 	$('.container').html('<center><h1>Thanks for Nothing</h1><br><img src="https://68.media.tumblr.com/bd172c9b6928e5b148be37d5a13e739a/tumblr_o21bscL3FW1uf5cjoo1_400.gif"></center><input type="submit" id="play-button" value="Play Again"/>')
-	// $('.container').append( `<input type="submit" id="play-button" value="Play Again"/>`)
 	$('#play-button').click(function(event){
 		event.preventDefault()
 		window.location.reload(true)
-		
+
 	})
 }
 
@@ -152,6 +151,7 @@ function petEat(pet){
 
 function petSleep(pet){
 	$('.show-interact').append("<button type='submit' id='sleep-button' value='Sleep'><img src='https://cdn4.iconfinder.com/data/icons/emojis-flat-pixel-perfect/64/emoji-41-128.png'></button>")
+
 	$('#sleep-button').click(function(event){
 		event.preventDefault()
 		$.ajax({
@@ -191,20 +191,19 @@ function petPlay(pet){
 				type: 'PATCH',
 				url: `http://localhost:3000/api/v1/pets/${pet.id}/rubiks`,
 				success: function(pet){
-					console.log('they played with a rubiks cube')
 					updateStats(pet)
 				}
 			})
 		})
 	} else if (pet.toys[i].id === 2){
 		$('.show-interact').append("<button type='submit' id='jump-rope-button' value='Jump Rope'><img src='https://cdn2.iconfinder.com/data/icons/sports-fitness-line-vol-3/52/Skipping__jump__jumprope__childskipping__womanskipping__youngskipping__rope-128.png'></button>")
+
 		$('#jump-rope-button').click(function(event){
 			event.preventDefault()
 			$.ajax({
 				type: 'PATCH',
 				url: `http://localhost:3000/api/v1/pets/${pet.id}/jumprope`,
 				success: function(pet){
-					console.log('they played with a jump rope')
 					updateStats(pet)
 				}
 			})
@@ -217,9 +216,8 @@ function petPlay(pet){
 				type: 'PATCH',
 				url: `http://localhost:3000/api/v1/pets/${pet.id}/fidgetspinner`,
 				success: function(pet){
-					console.log('they played with a fidget spinner')
 					updateStats(pet)
-	
+
 				}
 			})
 		})
@@ -234,10 +232,15 @@ function petPlay(pet){
 }
 
 function updateStats(pet){
-	let happiness = `<li>Happiness Level : ${pet.happiness}</li>`
-	let hunger = `<li>Hunger Level : ${pet.hunger}</li>`
-	let intelligence = `<li>Intelligence Level : ${pet.intelligence}</li>`
-	let sleepiness = `<li>Sleepiness Level: ${pet.sleepiness}</li>`
+	let happiness = `<center>Happiness Level : ${pet.happiness} <br> <div class="progress"><div class="progress-bar happiness" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div> </div> <br></center>`
+	let hunger = `<center>Hunger Level : ${pet.hunger} <br> <div class="progress"><div class="progress-bar hunger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div> </div> <br></center>`
+	let intelligence = `<center>Intelligence Level : ${pet.intelligence} <br> <div class="progress"><div class="progress-bar intelligence" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div> </div> <br></center>`
+	let sleepiness = `<center>Sleepiness Level: ${pet.sleepiness} <br> <div class="progress"><div class="progress-bar sleepiness" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div> </div> <br></center>`
 	let stats = [happiness, hunger, intelligence, sleepiness].join(' ')
-	return $('.show-status').html(stats) 
+	$('.show-status').html(stats)
+	$('.progress-bar.happiness').css("width", ((`${pet.happiness}`)*5)+"%");
+	$('.progress-bar.hunger').css("width", ((`${pet.hunger}`)*5)+"%");
+	$('.progress-bar.intelligence').css("width", ((`${pet.intelligence}`)*5)+"%");
+	$('.progress-bar.sleepiness').css("width", ((`${pet.sleepiness}`)*5)+"%");
+
 }

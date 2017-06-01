@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+   <link rel="stylesheet" type="text/css" href="bootstrap-progressbar.css">
  	<style>
 		 .flex{
 		 	display: flex;
@@ -19,6 +19,14 @@
       	color:#996;
       }
 
+
+      .progress .bar {
+        -webkit-transition: width 2s ease-in-out;
+        -moz-transition: width 2s ease-in-out;
+        -ms-transition: width 2s ease-in-out;
+        -o-transition: width 2s ease-in-out;
+        transition: width 2s ease-in-out;
+      }
 
  	</style>
    <meta charset="utf-8">
@@ -81,7 +89,7 @@
   <div class="show-pet-name"></div>
   <div class="show-interact"></div>
 
-  <div class="show-status">
+  <div class="show-status" text-align="center">
     <ul></ul>
   </div>
 
