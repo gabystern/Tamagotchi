@@ -1,5 +1,7 @@
 class Api{
 
+
+
 	createPet(name, setting_id, image, toys, alltoys){
 		$.ajax({
 		type: 'POST',
@@ -15,7 +17,9 @@ class Api{
 		}}
 		,
 		success: function(data){
+			console.log('stop')
 			$('#new-pet').hide()
+			// let mypet = new Pet(data)
 			startTimer(data)
 			showDetails(data)
 
