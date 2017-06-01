@@ -1,12 +1,18 @@
 
-$(document).ready(function() {
+let api
 
+$(document).ready(function() {
+	makeApi()
 	fetchToys()
 	fetchSettings()
 	imageClick()
 	submitPet()
 
 })
+
+function makeApi() {
+	api = new Api
+}
 
 
 function imageClick(){
@@ -19,7 +25,6 @@ function imageClick(){
 
 
 function submitPet(){
-
 	$('#new-pet').submit(function(event){
 	event.preventDefault()
 	let name = $('#name').val()
@@ -30,14 +35,12 @@ function submitPet(){
 	for (var i = 0; i<toys.length; i++){
     alltoys.push(toys[i].value)
 	}
-	let api = new Api()
 	api.createPet(name, setting_id, image, toys, alltoys)
   })
 }
 
 
 function startTimer(pet){
-	let api = new Api()
 	api.timePet(pet)
 }
 
@@ -64,13 +67,11 @@ function renderDead(){
 
 
 function fetchToys(){
-	let api = new Api()
 	api.renderToys()
 	
 }
 
 function fetchSettings(){
-	let api = new Api()
 	api.renderSettings()
 }
 
@@ -93,17 +94,16 @@ function petEat(pet){
 	$('.show-interact').append("<button type='submit' id='eat-button' value='Eat'><img src='http://www.i2clipart.com/cliparts/5/a/8/f/clipart-burger-5a8f.png'></button>")
 	$('#eat-button').click(function(event){
 		event.preventDefault()
-		let api = new Api()
+
 		api.feedPet(pet)
 	})
 }
 
 function petSleep(pet){
 	$('.show-interact').append("<button type='submit' id='sleep-button' value='Sleep'><img src='https://cdn4.iconfinder.com/data/icons/emojis-flat-pixel-perfect/64/emoji-41-128.png'></button>")
-
 	$('#sleep-button').click(function(event){
 		event.preventDefault()
-		let api = new Api()
+
 		api.bedtimePet(pet)
 	})
 }
@@ -112,7 +112,7 @@ function addRubiksBtn(pet){
 	$('.show-interact').append("<button type='submit' id='rubiks-cube-button' value='Rubik's Cube'><img src='https://cdn0.iconfinder.com/data/icons/rubik-s-cube-color/128/rubiks-cube-128.png'></button>")
 	$('#rubiks-cube-button').click(function(event){
 		event.preventDefault()
-		let api = new Api()
+
 		api.playRubiks(pet)
 	})
 }	
@@ -122,7 +122,7 @@ function petRead(pet){
 	$('.show-interact').append("<button type='submit' id='read-button' value='Read'><img src='https://cdn0.iconfinder.com/data/icons/education-15/500/reader-128.png'></button>")
 	$('#read-button').click(function(event){
 		event.preventDefault()
-		let api = new Api()
+
 		api.readBook(pet)
 	})
 }
@@ -132,7 +132,7 @@ function addJumpRopeBtn(pet){
 $('.show-interact').append("<button type='submit' id='jump-rope-button' value='Jump Rope'><img src='https://cdn2.iconfinder.com/data/icons/sports-fitness-line-vol-3/52/Skipping__jump__jumprope__childskipping__womanskipping__youngskipping__rope-128.png'></button>")
 $('#jump-rope-button').click(function(event){
 		event.preventDefault()
-		let api = new Api()
+
 		api.jumpRope(pet)
 	})
 }
@@ -142,7 +142,7 @@ function addFidgetSpinBtn(pet){
 	$('.show-interact').append("<button type='submit' id='fidget-spinner-button' value='Fidget Spinner'><img src='https://cdn4.iconfinder.com/data/icons/fidget-spinner-toy-1/100/spinner_fidget_toy-03-128.png'></button>")
 	$('#fidget-spinner-button').click(function(event){
 		event.preventDefault()
-		let api = new Api()
+
 		api.spinFidget(pet)
 	})
 }
