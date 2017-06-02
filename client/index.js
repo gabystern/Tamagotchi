@@ -7,6 +7,7 @@ $(document).ready(function() {
 	readButtonListener()
 	jumpRopeListener()
 	rubiksCubeListener()
+	fidgetSpinnerListener()
 	playAgainListener()
 	makeApi()
 	fetchToys()
@@ -53,6 +54,14 @@ function rubiksCubeListener(){
 			let id = $(".show-interact").attr("id")
 			api.playRubiks(id)
 		})
+}
+
+function fidgetSpinnerListener(){
+	$("#pet").on("click","#fidget-spinner-button",function(event){
+		event.preventDefault()
+		let id = $(".show-interact").attr("id")
+		api.spinFidget(id)
+	})
 }
 
 function playAgainListener(){
