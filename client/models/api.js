@@ -24,7 +24,7 @@ class Api{
 			startTimer(data)
 			let pet = new Pet(data)
 			$("#pet").html(pet.render())
-
+			$("#pet").html(pet.showPetBackground())
 			}
 		})
 	}
@@ -118,6 +118,7 @@ class Api{
 			type: 'PATCH',
 			url: `http://localhost:3000/api/v1/pets/${id}/rubiks`,
 			success: function(data){
+				debugger
 				console.log('they played with a rubiks cube')
 				let pet = new Pet(data)
 				$("#pet").html(pet.render())
