@@ -19,31 +19,42 @@ class Api{
 		success: function(data){
 			console.log('stop')
 			$('#new-pet').hide()
+			$('.side-information').hide()
 			// let mypet = new Pet(data)
 			startTimer(data)
-			showDetails(data)
-
+			let pet = new Pet(data)
+			$("#pet").html(pet.render())
+			$("#pet").html(pet.showPetBackground())
 			}
 		})
 	}
 
 
 	timePet(pet){
+		let counter = 0
 		let timer = setInterval(function(){
+		counter += 1
 		$.ajax({
 			type: 'PATCH',
 			async: "false",
 			url: `http://localhost:3000/api/v1/pets/${pet.id}/decrement`,
 			success: function(data){
 				console.log('its going donw')
-				updateStats(data)
-				if (itsDead(data)){
+				let pet = new Pet(data)
+				$("#pet").html(pet.render())
+				pet.updateStats()
+				if (itsDead(pet)){
+
 					clearInterval(timer)
 					}
 				}
 			})
-		}, 1000)			
+		}, 1000)
+
 	}
+
+
+	// access pet with ID - pass it the counter
 
 
 	renderToys(){
@@ -57,7 +68,7 @@ class Api{
 				$('.toys').append(checkbox)
 				})
 			}
-		})	
+		})
 	}
 
 	renderSettings(){
@@ -75,68 +86,82 @@ class Api{
 	}
 
 
-	feedPet(pet){
+	feedPet(id){
 		$.ajax({
 		  type: 'PATCH',
-		  url: `http://localhost:3000/api/v1/pets/${pet.id}/feed`,
-		  success: function(pet){
-				console.log(`Pet has a hunger level of ${pet.hunger}`)
-				updateStats(pet)
+		  url: `http://localhost:3000/api/v1/pets/${id}/feed`,
+		  success: function(data){
+				console.log(`Pet has a hunger level of ${data.hunger}`)
+				let pet = new Pet(data)
+				$("#pet").html(pet.render())
+				pet.updateStats()
 		  	}
 		})
 	}
 
 
-	bedtimePet(pet){
+	bedtimePet(id){
 		$.ajax({
 			type: 'PATCH',
-			url: `http://localhost:3000/api/v1/pets/${pet.id}/sleep`,
-			success: function(pet){
-				console.log(`Pet has a sleepiness level of ${pet.sleepiness}`)
-				updateStats(pet)
+			url: `http://localhost:3000/api/v1/pets/${id}/sleep`,
+			success: function(data){
+				console.log(`Pet has a sleepiness level of ${data.sleepiness}`)
+				let pet = new Pet(data)
+				$("#pet").html(pet.render())
+				pet.updateStats()
 			}
 		})
 	}
 
-	playRubiks(pet){
+	playRubiks(id){
 		$.ajax({
 			type: 'PATCH',
-			url: `http://localhost:3000/api/v1/pets/${pet.id}/rubiks`,
-			success: function(pet){
+			url: `http://localhost:3000/api/v1/pets/${id}/rubiks`,
+			success: function(data){
+				debugger
 				console.log('they played with a rubiks cube')
+				let pet = new Pet(data)
+				$("#pet").html(pet.render())
+				pet.updateStats()
 			}
 		})
 	}
 
-	readBook(pet){
+	readBook(id){
 		$.ajax({
 			type: 'PATCH',
-			url: `http://localhost:3000/api/v1/pets/${pet.id}/read`,
-			success: function(pet){
-				console.log(`Pet has an intelligence level of ${pet.intelligence}`)
-				updateStats(pet)
+			url: `http://localhost:3000/api/v1/pets/${id}/read`,
+			success: function(data){
+				console.log(`Pet has an intelligence level of ${data.intelligence}`)
+				let pet = new Pet(data)
+				$("#pet").html(pet.render())
+				pet.updateStats()
 			}
 		})
 	}
 
-	jumpRope(pet){
+	jumpRope(id){
 		$.ajax({
 			type: 'PATCH',
-			url: `http://localhost:3000/api/v1/pets/${pet.id}/jumprope`,
-			success: function(pet){
+			url: `http://localhost:3000/api/v1/pets/${id}/jumprope`,
+			success: function(data){
 				console.log('they played with a jump rope')
-				updateStats(pet)
+				let pet = new Pet(data)
+				$("#pet").html(pet.render())
+				pet.updateStats()
 			}
 		})
 	}
 
-	spinFidget(pet){
+	spinFidget(id){
 		$.ajax({
 			type: 'PATCH',
-			url: `http://localhost:3000/api/v1/pets/${pet.id}/fidgetspinner`,
-			success: function(pet){
+			url: `http://localhost:3000/api/v1/pets/${id}/fidgetspinner`,
+			success: function(data){
 				console.log('they played with a fidget spinner')
-				updateStats(pet)
+				let pet = new Pet(data)
+				$("#pet").html(pet.render())
+				pet.updateStats()
 			}
 		})
 	}
