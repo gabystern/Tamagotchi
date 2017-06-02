@@ -127,7 +127,6 @@ function fetchSettings(){
 	api.renderSettings()
 }
 
-
 // function countUpTimer(pet, endTime){
 //   var startTime = pet.created_at
 //   var x = setInterval(function() {
@@ -229,3 +228,4 @@ function fetchSettings(){
 // 	$('.progress-bar.sleepiness').css("width", ((`${pet.sleepiness}`)*5)+"%");
 //
 // }
+

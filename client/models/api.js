@@ -87,6 +87,7 @@ class Api{
 
 
 	feedPet(id){
+		debugger
 		$.ajax({
 		  type: 'PATCH',
 		  url: `http://localhost:3000/api/v1/pets/${id}/feed`,
