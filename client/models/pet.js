@@ -15,8 +15,8 @@ class Pet{
 
 	render(){
 		let html = `
-		<div class="show-pet">${this.showPet()}</div>
-    <div class="show-pet-name"></div>
+		<div class="show-pet">${this.showPetImage()} </div>
+    <div class="show-pet-name">${this.showPetName()}</div>
     <center><div class="show-interact" id="${this.id}">${this.petEat()} ${this.petSleep()} ${this.petRead()} ${this.playGames()} </div></center>
     <div class="show-status" text-align="center">
       <ul></ul>
@@ -34,10 +34,19 @@ class Pet{
 		$('.progress-bar.hunger').css("width", ((`${this.hunger}`)*5)+"%");
 		$('.progress-bar.intelligence').css("width", ((`${this.intelligence}`)*5)+"%");
 		$('.progress-bar.sleepiness').css("width", ((`${this.sleepiness}`)*5)+"%");
+		$("#pet").html(this.showPetBackground())
 	}
 
-	showPet(){
-		return `<img src=${this.image}><br><h3>${this.name}</h3><img src=${this.setting.image}>`
+	showPetImage(){
+		return `<center><img src='${this.image}'></center>`
+	}
+
+	showPetName(){
+		return `<center><h3>${this.name}<h3></center>`
+	}
+
+	showPetBackground(){
+		$(".show-pet").css('backgroundImage', `url(${this.setting.image})`)
 	}
 
 	petEat(){
