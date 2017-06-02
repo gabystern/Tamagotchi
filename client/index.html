@@ -17,34 +17,37 @@
 
  <body>
 	<div class="container-fluid" id="container">
-    <div class="row">
-      <div class="col-sm-3 side-information">
-        <h2> Tamagotchi 2K17 </h2>
-        <p> Do you miss your old tamagotchi? <br><br> Did you cry when it would die while you were at school?<br><br> Now you can play with your tamagotchi wherever you are with the interwebs! <br><br> Pick a pet and make sure to keep it alive as long as possible by feeding it, putting it to bed and letting it play with its toys. <br><br> When you're ready, hit submit and start playing! </p>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-3">Tamagotchi 2K17</h1>
+        <p class="lead">Do you miss your old tamagotchi? Pick a pet and make sure to keep it alive as long as possible by feeding it, putting it to bed and letting it play with its toys.</p>
       </div>
-      <div class="col-sm-9">
+    </div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+    <div class="row">
         <div class="newpet_div">
     		<form id="new-pet">
     		<h4>Pick a Pet</h4>
     		<div class="flex form-group">
     		<br>
-    			<div class="btn btn-primary">
+    			<div class="btn btn-secondary">
     				<img src="https://media.giphy.com/media/5fBH6zrcIiOs65zXCtG/giphy.gif" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
     				<input type="checkbox" name="pet1" id="pet1" value="val1" class="hidden" autocomplete="off">
     			</div>
 
-    			<div class="btn btn-primary">
+    			<div class="btn btn-secondary">
     				<img src="https://media.giphy.com/media/qjqUcgIyRjsl2/source.gif" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
     				<input type="checkbox" name="image" id="pet2" value="val2" class="hidden" autocomplete="off">
     			</div>
 
 
-    			<div class="btn btn-primary">
+    			<div class="btn btn-secondary">
     				<img src="https://s-media-cache-ak0.pinimg.com/originals/36/b1/6c/36b16cc68bbbca07f1c37183112de693.gif" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
     				<input type="checkbox" name="image" id="pet3" value="val3" class="hidden" autocomplete="off">
     			</div>
 
-    			<div class="btn btn-primary">
+    			<div class="btn btn-secondary">
     				<img src="https://68.media.tumblr.com/52e996cbd1c089aca9cac872578604da/tumblr_onr92bElOC1syjt2wo1_500.gif" style="min-height:100px;height:50px;" alt="..." class="img-thumbnail img-check">
     				<input type="checkbox" name="image" id="pet4" value="val4" class="hidden" autocomplete="off">
     			</div>
@@ -69,9 +72,10 @@
     			<input type="submit">
     		</form>
       </div>
-    </div>
     <div id="pet">
     </div>
+    </div>
+    <div class="col-sm-3"></div>
   </div>
 
 	<script type="text/javascript" src='index.js'></script>

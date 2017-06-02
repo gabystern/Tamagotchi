@@ -105,7 +105,7 @@ class Pet{
 	}
 
 	dead(){
-		return '<center><h1>Thanks for Nothing</h1><br><img src="https://68.media.tumblr.com/bd172c9b6928e5b148be37d5a13e739a/tumblr_o21bscL3FW1uf5cjoo1_400.gif"></center><input type="submit" id="play-button" value="Play Again"/>'
+		return '<center><h1>Thanks for Nothing</h1><br><img src="https://68.media.tumblr.com/bd172c9b6928e5b148be37d5a13e739a/tumblr_o21bscL3FW1uf5cjoo1_400.gif"><input type="submit" id="play-button" value="Play Again"/></center>'
 	}
 
 }
