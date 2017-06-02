@@ -15,7 +15,7 @@ class Pet{
 
 	render(){
 		let html = `
-		<div class="show-pet">${this.showPetImage()} </div>
+		<div class="show-pet" id="show-pet">${this.showPetImage()} </div>
     <div class="show-pet-name">${this.showPetName()}</div>
     <center><div class="show-interact" id="${this.id}">${this.petEat()} ${this.petSleep()} ${this.petRead()} ${this.playGames()} </div></center>
     <div class="show-status" text-align="center">
@@ -38,7 +38,7 @@ class Pet{
 	}
 
 	showPetImage(){
-		return `<center><img src='${this.image}'></center>`
+		return `<center><img src='${this.image}' id='pet-pic'></center>`
 	}
 
 	showPetName(){
