@@ -126,8 +126,6 @@ function fetchToys(){
 function fetchSettings(){
 	api.renderSettings()
 }
-
-
 // function countUpTimer(pet, endTime){
 //   var startTime = pet.created_at
 //   var x = setInterval(function() {
