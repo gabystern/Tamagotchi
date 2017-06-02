@@ -5,7 +5,7 @@ city = Setting.create(
 
 forest = Setting.create(
 	location: "Magical Forest",
-	image: "http://www.hilltoppaintball.com/house/images/farm.jpg"
+	image: "https://s-media-cache-ak0.pinimg.com/originals/55/32/65/55326594e3aa3686387d436b93b0680b.jpg"
 	)
 
 theclub = Setting.create(

@@ -150,14 +150,26 @@ function addFidgetSpinBtn(pet){
 
 function petPlay(pet){
 	for (var i = 0; i<pet.toys.length; i++){
-		if (pet.toys[i].id === 1){
+		if (pet.toys[i].id === 1 && pet.toys[i].id === 2 && pet.toys[i].id === 3){
+			addRubiksBtn(pet)
+			addJumpRopeBtn(pet)
+			addFidgetSpinBtn(pet)
+		}else if (pet.toys[i].id === 1 && pet.toys[i].id === 2){
+			addRubiksBtn(pet)
+			addJumpRopeBtn(pet)
+		}else if (pet.toys[i].id === 1 && pet.toys[i].id === 3){
+			addRubiksBtn(pet)
+			addFidgetSpinBtn(pet)
+		}else if (pet.toys[i].id === 2 && pet.toys[i].id === 3){
+			addJumpRopeBtn(pet)
+			addFidgetSpinBtn(pet)
+		}else if (pet.toys[i].id === 1){
 			addRubiksBtn(pet)
 		} else if (pet.toys[i].id === 2){
 			addJumpRopeBtn(pet)
 		} else if (pet.toys[i].id === 3) {
 			addFidgetSpinBtn(pet)
-
-		}
+		} 
 	}
 	updateStats(pet)
 	$('.show-pet').css('backgroundImage',`url(${pet.setting.image})`)
