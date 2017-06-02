@@ -19,42 +19,26 @@
       }
 
 			div h2 {
-				color: white;
+				color: black;
 			}
 
 			div p {
 				word-wrap: break-word;
-				color: white;
+				color: black;
 			}
 
-			.side-information{
-				background: grey;
-				height: 100%;
-				/*border-style: solid;
-				border-right-color: grey;
-				border-left-color: white;
-				border-left-width: 0px;
-				border-top-color: white;
-				border-top-width: 0px;
-				border-bottom-color: white;
-				border-bottom-width: 0px;*/
-			}
-			.col-sm-3 {
-		    padding-bottom: 100%;
-		    margin-bottom: -100%;
+			.jumbotron {
+		    margin-bottom: 0px;
+		    background-image: url(../images/tamagotchi-final.001.jpeg);
+		    background-position: 0% 25%;
+		    background-size: cover;
+		    background-repeat: no-repeat;
+		    color: white;
 			}
 
-			/*.sidebar-wrapper {
-			  background: #1a1a1a;
-			  height: 100%;
-			  left: 220px;
-			  margin-left: -220px;
-			  width: 0;
-  		}*/
-/*
-			#pet-pic{
-				margin-left: 5%;
-
-			}*/
+			#pet-img{
+				background: url(http://hdr-photographer.com/wp-content/uploads/2016/06/shiratani_magical.jpg);
+				background-size: 50px 50px;
+			}
 
  	</style>

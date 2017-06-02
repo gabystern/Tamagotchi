@@ -19,7 +19,7 @@ class Api{
 		success: function(data){
 			console.log('stop')
 			$('#new-pet').hide()
-			$('.side-information').hide()
+			$('.jumbotron').hide()
 			// let mypet = new Pet(data)
 			startTimer(data)
 			let pet = new Pet(data)
